@@ -1,0 +1,167 @@
+{% extends './base.html' %}
+{% load staticfiles %}
+<head>
+
+
+<style>
+  .morecontent {
+   display: none;
+}
+</style>>
+</head>
+<a href ="/CreateBlog/">New Blog</a>
+
+{% block content %}
+    <body>
+
+
+
+
+	    <br><br>	    
+ <div class="row ">
+     <div class="col s10 " style="display:inline-block" >
+	     <!-- <div class="row"  style="display:inline-block"> -->
+	     <div style="">
+<div class="row"  style="display:inline-block">
+
+{% for post in blogs %}
+<!--<div style="">
+<div class="row"  style="display:inline-block"> -->
+	<div class="col s12 m6 l4"  style="display:inline-block">
+    
+    <div class="card" >
+        <div class=" card topics" ><h5 style="padding:5px; background-color: #062a2c; color: white ;">{{ post.topic }} </h5>
+        </div>      
+	    <div class="card-image">
+            <img src="{{post.link1}}"  style="max-height:200px; max-width:100%">
+	
+             </div>
+
+	 <div style="padding-left: 30 ;" >
+         <h5> {{ post.title}}: </h5>
+        </div>
+
+        <div class="text2"  >
+        <div style= " border-radius: 50%;">
+         <!--   <img src="{% static 'bodhi_logo.png'%}" style="width:50px ; height:50px;border-radius: 100%;"alt="Avatar" ;> -->
+        <div style="display: inline-block; margin:5px ">
+       <!--  <div> {{ post.created_by }} </div>
+           <div>   {{ post.updated_at.date }} </div> -->
+            </div>
+            </div>
+
+
+<!--
+     <form  id="myForm" action="/blog/title/" method="post"  name='myForm'>
+          {% csrf_token %}
+
+          <input type="hidden" value={{id}} name={{post.title}}/>
+            <button type="submit" name="id" value="{{post.id}}" class="readmorebtn">Read More</button>
+
+
+
+
+
+          <h5> <strong > <a style="padding-left: 30 ; "  href ="#" onclick="document.getElementById('myform').submit();">{{ post.title}}:</a> </h5>
+
+</form>
+-->        
+            
+	   <div class="text" style="padding-left: 5 ;color:grey" >
+		   <img src="" style="max-width:100%"/>
+               <p>{{ post.Blog_Text|safe}}<br><br> </p>
+            </div>
+
+
+
+    </div>
+     <form  id="myForm" action="/blog/title/" method="post"  name='myForm'>
+          {% csrf_token %}
+
+          <input type="hidden" value={{id}} name={{post.title}}/>
+          <button type="submit" name="id" value="{{post.id}}" class="readmorebtn">Read More>> </button>
+
+	  <!--          <a style="padding-left: 30 ; "  href ="#" onclick="document.getElementById('myform').submit();"></a>-->
+
+</form>
+
+       <div>
+	       <a href="http://www.bodhiai.in/">
+        <img src="{% static 'blog/bodhi_logo.png'%}" style="width:50px ; height:50px;border-radius: 100%;"alt="Avatar" ;>
+
+           <div style="display: inline-block; margin:2px ">
+            <div> {{ post.created_by }} </div>
+            <div>   {{ post.updated_at.date }} </div>
+             </div>
+         </a>
+        </div>
+
+            
+
+    </div>
+        </div>
+
+
+              {% endfor %}
+    </div>
+         </div>
+
+ </div>
+
+
+<div class="col s2">
+     <div class="" style="">
+         <h4>latest Blogs</h4>
+      <h1 class="latest"></h1>
+
+    {% for category in categories %}
+    <div class="sideblog" >
+        <div class="card-panel">
+        <a href="{% url 'category_topics' category.pk %}" >{{category.name }}</a><br>
+        <small class="text-muted d-block">{{category.description }}</small>
+    </div>
+
+
+      {% endfor %}
+    </div>
+        </div>
+    </div>
+
+    </div>
+
+
+</body>
+
+ {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+<head>
+    <style>
+body {
+  background-color: linen;
+}
+
+text {
+ margin : 0 40px 0px 40px;
+    text-align: justify;
+}
+</style>
+</head>
+
+{% block title %}{{ topic.subject }}{% endblock %}
+
+{% block breadcrumb %}
+
+  <li class="breadcrumb-item"><a href="{% url 'blog:category_topics' topic.category.pk %}">{{ topic.category.name }}</a></li>
+  <li class="breadcrumb-item active">{{ topic.subject }}</li>
+{% endblock %}
+
+{% block content %}
+
+  <div class="mb-4">
+  </div>
+
+  {% for post in topic.posts.all %}
+
+
+    <div class="card mb-2 {% if forloop.first   %}border-dark{% endif %}">
+        <div class="blue-grey lighten-3" ><h4>{{ post.topic }} </h4></div>
+       <img src="{% static 'blog/bodhi_logo.png'%}" style="width:50px ; height:50px;border-radius: 100%;"alt="Avatar" ;>
+
+           <div style="display: inline-block; margin:5px ">
+            <div> {{ post.created_by }} </div>
+            <div>   {{ post.updated_at.date }} </div>
+             </div>
+
+
+
+
+            <u><h4 class="title">{{ post.title }}</h4></u>
+        <div class="text22" style="padding: 0 15 0 15" >
+		<img src="" style="max-width:100%"/>
+            <p>{{ post.Blog_Text|safe }}<br>
+	    
+
+        </p>
+        {% if post.created_by == user %}
+            {% endif %}
+          </div>
+      <div class="card-body p-3">
+        <div class="row">
+          <div class="col-2">
+
+          </div>
+          <div class="col-10">
+            <div class="row mb-3">
+              <div class="col-6">
+            <!--    <strong class="text-muted">{{ post.created_by.username }}</strong>
+                  <h5>
+                <small class="text-muted">{{ post.created_at }}</small></h5> -->
+           </div>
+        </div>
+      </div>
+	</div>
+
+
+
+	<div id="social">
+
+                        <a class="facebookBtn smGlobalBtn" href="http://www.facebook.com/sharer/sharer.php?u=http://13.234.37.98{{ request.get_full_path|urlencode }}" > </a>
+                        <a class="twitterBtn smGlobalBtn" href="http://www.twitter.com/login/?url=http://www.bodhiai.in/membership/register/{{ request.get_full_path|urlencode }}s" ></a>
+                        <a class="googleplusBtn smGlobalBtn" href="http://bodhiaireact.s3-website.ap-south-1.amazonaws.com/#/" ></a>
+                        <a class="linkedinBtn smGlobalBtn" href="http://www.linkedin.com/shareArticle?url=http://www.bodhiai.in/membership/register/{{ request.get_full_path|urlencode }}&title=<Favourate Blog>&summary=<Blog>&source=www.bodhiai.in" ></a>
+                        <a class="pinterestBtn smGlobalBtn" href="http://bodhiaireact.s3-website.ap-south-1.amazonaws.com/#/" ></a>
+                        <a class="tumblrBtn smGlobalBtn" href="http://bodhiaireact.s3-website.ap-south-1.amazonaws.com/#/" ></a>
+                        <a class="rssBtn smGlobalBtn" href="http://bodhiaireact.s3-website.ap-south-1.amazonaws.com/#/" ></a>
+                </div>
+
+    </div>
+      </div>
+
+
+  {% endfor %}
+
+{% endblock %}

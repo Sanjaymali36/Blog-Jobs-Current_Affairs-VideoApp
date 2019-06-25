@@ -1,0 +1,27 @@
+{% block fullwidthheader %}
+  <div class="masthead">
+    <h1>The Parsifal Blog</h1>
+    <p>Find out the latest news on Parsifal</p>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {% for entry in entries %}
+        <article>
+          <h2><a href="{% url 'videoapp:entry' entry.slug %}">{{ entry.title }}</a></h2>
+          <p class="text-muted">
+
+
+          </p>
+          <div class="content">
+
+          <iframe width="420" height="345" src="{{entry.summary}">
+</iframe>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

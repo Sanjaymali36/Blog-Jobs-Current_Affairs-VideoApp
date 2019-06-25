@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% extends './base.html' %}
+
+{% load static %}
+<html lang="en">
+
+{% block title %}{{ entry.title }}{% endblock %}
+
+<head>
+<body>
+<script>
+img[src=""] {
+    display: none;
+}
+
+
+
+var d = new Date();
+document.getElementById("header").innerHTML = d;
+</script>
+</body>
+<!--<link rel="icon" href="{% static 'gk_app/bodhi_logo.png'%}" type="image/gif" sizes="16x16">-->
+ <style>
+
+
+  }
+
+</style>
+<a href ="/CreateBlog/">New Blog</a>s
+{% block breadcrumb %}
+    <li  class="breadcrumb-item active"> <h3></h3></li>
+{% endblock %}
+
+{% block content %}
+    <body>
+
+<!--     <div class="col s3 simple" style="margin-left: px;padding-left:px;width: 26.66667%;">-->
+<!--         <div class="panel-title" style="max_width:100%;font-size:18px;color: inherit;background-color: black;font-family: 'Raleway', sans-serif;color: #fff;padding:10px ;  position: sticky; top: -10px;">Date Wise Current Affair</div>-->
+<!--         <div class="  " style="box-sizing: border-box;overflow-y: auto;max-height:400px;padding:10px; box-shadow: 1px 1px 1px 1px gray ; position: relative; ">-->
+
+
+
+<!--     {% for category in categories %}-->
+
+<!--      <div class="scrollbox" style="padding:10px; padding: 10px ; color: black ; border-bottom: solid #c5c0c0 1px;"> <a  class="scrollbox-content" style="padding-bottom:10px; margin-bottom: 5px ; text-decoration:none ; color:black;" href="{% url 'gk_app:category_topics' category.pk %}">{{category.name }} </a></div>-->
+
+<!--      {% endfor %}-->
+
+<!--</div>-->
+<!--<br><br>-->
+<!--              <div class="panel-title" style="max_width:100%;font-size:16px;color: inherit;background-color: #000000;font-family: 'Raleway', sans-serif;color: #fff;padding:10px ; margin-bottom: -8px ;  position: sticky; top: -10px;">Category Wise Current Affair</div>-->
+<!--  <div class="  "style="box-sizing: border-box;overflow-y: auto;max-height:400px;padding:10px; box-shadow: 1px 1px 1px 1px gray ; position: relative; ">-->
+<!--&lt;!&ndash;     <div class="panel-title" style="max_width:100%;font-size:16px;color: inherit;background-color: #000000;font-family: 'Raleway', sans-serif;color: #fff;padding:10px ; margin-bottom: -8px ;  position: sticky; top: -10px;">Category Wise Current Affair</div>&ndash;&gt;-->
+
+<!--</br>-->
+
+<!--     {% for c in GK_categories %}-->
+
+<!--      <div class=" scrollbox  " style="padding:10px; padding: 10px ; color: black ; border-bottom: solid #c5c0c0 1px;">  <a  class="scrollbox-content" style="padding-bottom:10px; margin-bottom: 5px ; text-decoration:none ; color:black;" href="{% url 'gk_app:category_topics2' c.pk %}">{{c.name }} </a></div>-->
+<!--        <small class="text-muted d-block">{{category.description }}  </small>-->
+
+<!--      {% endfor %}-->
+
+<!--    </div>-->
+
+<!--    </div>-->
+<!--</body>-->
+
+
+
+
+
+
+
+
+
+ {% for e in entry %}
+
+    <div class="card mb  border-dark" style="margin-top:25px;width:100%;">
+        <div class="  py-2 px-3 header" style="background-color:black" ><img src="{% static 'newsapp/bodhi_logo.png'%}" style="width:25px ; height:25px;border-radius: 100%;"alt="Avatar" ;> {{e.section_category}}
+        </div>
+
+        <div class="text">
+        <div style= " border-radius: 50%;padding-left: 15%;">
+        <!--    <img src="{% static 'bodhi_logo.png'%}" style="width:50px ; height:50px;border-radius: 100%;"alt="Avatar" ;>
+        <div style="display: inline-block; margin:10px ">
+        <div> {{ post.created_by }} </div>
+            <div>   {{ post.updated_at.date }} </div>
+            </div>-->
+            </div>
+
+            <div style="padding:10 25 0 25;color: #d63c24;font-size: 20px;line-height: normal;outline: medium none;text-decoration: none;">
+         <img src="{{e.question_link}}"  alt="Smiley face">
+            </div>
+            <div style="font-size:16;">
+             <p>{{ e.question_text|safe }}</p>
+            <p> Correct Answer :{{ e.correct_option|safe }}</p>
+</div>
+
+
+
+<!--
+<div class="share">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=http://www.bodhiai.in/{{ request.build_absolute_uri }}"> <img src="https://www.duprelogistics.com/wp-content/themes/hightower_wp/images/Facebook.svg" height="40" width="30"></a>
+    <a href="http://www.linkedin.com/shareArticle?url=http://www.bodhiai.in/membership/register/{{ request.get_full_path|urlencode }}&title=<Favourate Blog>&summary=<Blog>&source=www.bodhiai.in"><img src="https://sguru.org/wp-content/uploads/2018/02/Logo-LinkedIn-Round.png" height="28" width="20"></a>
+        <a href="http://www.twitter.com/login/?url=http://www.bodhiai.in/membership/register/{{ request.get_full_path|urlencode }}"> <img src="https://carleton.ca/history/wp-content/uploads/twitter-logo-large.png" height="20" width="20"></a>
+        <a href="https://www.whatsapp.com//share/post.php?url =http://www.bodhiai.in/membership/register/{{ request.get_full_path|urlencode }}" ><img src="https://pngimg.com/uploads/whatsapp/whatsapp_PNG12.png" height="25" width="20"></a>
+    </div>
+-->
+    </div>
+    </div>
+  {% endfor %}
+{% endblock %}
+</html>

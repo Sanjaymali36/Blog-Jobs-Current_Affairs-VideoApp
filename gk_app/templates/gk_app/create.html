@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+{% load static %}
+<div class="blog-header">
+    <h3> Welcome To BodhiAI Platform </h3>
+<br/>
+</div>
+</body>
+
+<h4>Write Comments:
+<body>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <textarea rows="4" cols="50" size="5" maxlength="500" name="body">
+    </textarea>
+  <input type="submit"  value = "submit" name="blog_body" size="5" maxlength="500" placeholder=" Write Your Comment Here">
+</form>
+</body>
+</html>

@@ -1,0 +1,126 @@
+
+{% extends 'videoapp/base.html' %}
+{% load staticfiles %}
+<head>
+
+
+
+@media (min-width:768px) {
+    .card-topics > .card
+    {
+        width: 29%;
+        flex-wrap: wrap;
+        flex: initial;
+    }
+}
+<style>
+   .morecontent {
+   display: none;
+}
+
+</style>>
+</head>
+<a href ="/CreateBlog/">New Blog</a>
+
+{% block content %}
+    <body>
+<br><br><br>  <br><br>
+ <div class="row ">
+     <div class="col-md-10 col-sm-12 js-collectable " >
+
+             <div style="">
+<div class="row">
+
+ {% for post in topic.posts1.all %}
+<div class="col-sm-12 col-md-6"  style="margin-bottom: 20;">
+        <div class="card mb-4"  style="margin-bottom: 20;">
+
+    <div class="card h-15" >
+            <div class=" card topics" >
+                <div style="font-family: 'initial', cursive;font-weight: 600; padding-left:10"> {{post.title}} </div>
+        </div>
+            <div class="card" >
+             <article>
+
+          <a  style="font-family: 'initial', cursive;font-weight: 600; padding-left:10" {{ post.title }}</a>
+          <div style="object-fit:contain" class="content">
+           <p>{{ post.Video_Content|safe}} </p>
+          </div>
+        </article>
+
+             </div>
+</div>
+
+
+        <div class="text2"  >
+        <div style= " border-radius: 50%;">
+
+        <div style="display: inline-block; margin:5px ">
+
+            </div>
+            </div>
+
+
+               <!--<a href="http://www.bodhiai.in/">-->
+        <img src="{% static 'videoapp/bodhi_logo.png'%}" style="width:50px ; height:50px;border-radius: 100%;"alt="Avatar" ;>
+
+           <div style="display: inline-block; margin:5px;font-size: 15px;">
+               <div>BodhiAI</div>
+            <div>  {{ post.updated_at.date }} </div>
+             </div>
+         </a>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+              {% endfor %}
+    <br>
+    </div>
+         </div>
+
+ </div>
+
+ {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

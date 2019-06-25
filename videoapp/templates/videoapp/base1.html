@@ -1,0 +1,110 @@
+
+{% load staticfiles %}
+<html>
+  <head>
+    <body>
+
+
+<style>
+  .header{
+  background-color:#1abb9c;
+  color: white;
+  font-weight: 600;
+}
+  }
+
+</style>
+     <link href="https://fonts.googleapis.com/css?family=Overlock" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="utf-8">
+    <title>{% block title %}BodhiAI Video Tutorial {% endblock %}</title>
+    <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Peralta" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'img/css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static 'img/css/app1.css' %}">
+    {% block stylesheet %}{% endblock %}
+  </head>
+  {% if user.is_authenticated %}
+  <a href ="/create_blog/"></a>
+  {% endif %}
+  <body>
+    {% block body %}
+
+      <nav class="navbar navbar-expand-sm navbar-dark  header" style="background-color:orange" >
+        <div class="container">
+
+          <a class="navbar-brand" href="{% url 'videoapp:home' %}">BodhiAI Video Tutorial </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainMenu">
+
+              <ul class="navbar-nav ml-auto">
+                <button type="button" class="btn btn-danger" style="height:auto ;">
+                <a class="navbar-brand" href="http://bodhiaireact.s3-website.ap-south-1.amazonaws.com/#/userregistration">Join Now </a> </button>
+                <li class="nav-item dropdown">
+          <!--        <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ user.username }}
+                  </a> -->
+                  </div>
+                </li>
+              </ul>
+
+
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <ol class="breadcrumb my-4">
+          {% block breadcrumb %}
+          {% endblock %}
+        </ol>
+        {% block content %}
+        {% endblock %}
+      </div>
+    {% endblock body %}
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <style>
+
+</style>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+          crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+   <script src="{% static "tinymce/js/prism.js" %}"></script>
+
+
+<!--<div id="fixed-social">-->
+  <!--<div>-->
+    <!--<a href="http://www.facebook.com/sharer/sharer.php?u=http://13.234.37.98/blog/" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--<a href="http://www.twitter.com/login/?url=http://www.bodhiai.in/membership/register/{{ request.get_full_path|urlencode }}" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--<a href="http://www.linkedin.com/shareArticle?url=http://www.bodhiai.in/membership/register/{{ request.get_full_path|urlencode }}&title=<Favourate Blog>&summary=<Blog>&source=www.bodhiai.in" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--<a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>-->
+  <!--</div>-->
+
+</div>
+
+
+
+
+
+</body>
+</html>

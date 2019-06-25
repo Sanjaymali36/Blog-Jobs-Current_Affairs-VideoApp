@@ -1,0 +1,141 @@
+{% extends 'videoapp/base.html' %}
+{% load staticfiles %}
+<head>
+
+
+
+@media (min-width:768px) {
+    .card-topics > .card
+    {
+        width: 29%;
+        flex-wrap: wrap;
+        flex: initial;
+    }
+}
+<style>
+   .morecontent {
+   display: none;
+}
+
+</style>>
+</head>
+<a href ="/CreateBlog/">New Blog</a>
+
+{% block content %}
+    <body>
+<br><br><br>  <br><br>
+ <div class="row ">
+     <div class="col-md-10 col-sm-12 js-collectable " >
+
+             <div style="">
+<div class="row">
+
+ {% for entry in entries %}
+
+        <div class="col-sm-12 col-md-6"  style="margin-bottom: 20;">
+
+    <div class="card h-15" >
+            <div class=" card topics" >
+
+        </div>
+            <div class="card" >
+             <article>
+          <a  style="font-family: 'initial', cursive;font-weight: 600; padding-left:10" href="{% url 'videoapp:entry' entry.slug %}">{{ entry.title }}</a>
+          <div style="object-fit:contain" style="width:100%" class="content">
+            {{ entry.summary|safe }}
+          </div>
+        </article>
+
+             </div>
+
+
+
+        <div class="text2"  >
+        <div style= " border-radius: 50%;">
+
+        <div style="display: inline-block; margin:5px ">
+
+            </div>
+            </div>
+
+
+               <!--<a href="http://www.bodhiai.in/">-->
+
+        <img src="{% static '/videoapp/bodhi_logo.png'%}" style="width:50px ; height:50px;border-radius: 100%;"alt="Avatar" ;>
+           <div style="display: inline-block; margin:2px ">
+            <div> BodhiAI </div>
+            <div>  {{ entry.last_update.date }} </div>
+             </div>
+         </a>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+              {% endfor %}
+    </div>
+         </div>
+
+ </div>
+
+
+      <body >
+     <div class="col s3 simple" style="margin-left: 15px;padding-left:15px;width: 80.66667%; ">
+         <div class="panel" style="width:167%;font-size:18px;color: inherit;background-color: black;font-family: 'Raleway', sans-serif;color: #fff;padding:10px ; margin-bottom: px ;  position: sticky; top: -10px;">Category Wise Videos</div>
+         <div class="  " style="box-sizing: border-box;overflow-y: auto;max-height:400px;padding:10px; box-shadow: 1px 1px 1px 1px gray ; position: relative; width: 165%;">
+      <div class="panel-title" style="max_width:0%;font-size:1px;color: inherit;font-family: 'Raleway', sans-serif;color: #fff   t;"></div>
+
+     {% for category in categories %}
+
+      <div class="scrollbox" style="padding:7px; padding: 7px ; width:100%;color: black ; border-bottom: solid #c5c0c0 1px;border-bottom-length: 100%;"> <a  class="force-overflow" style="padding-bottom:10px; margin-bottom: 5px ; text-decoration:none ; color:black;" href="{% url 'videoapp:category_topics' category.pk %}" >{{category.name }} </a></div>
+
+      {% endfor %}
+
+
+
+
+
+
+
+
+<!--<div class="col-2">-->
+     <!--<div class="sidebars" style="width: 16.66667%;">-->
+         <!--<h4>Categoy Wise Videos</h4>-->
+      <!--<h1 class="latest"></h1>-->
+
+    <!--{% for category in categories %}-->
+    <!--<div class="sideblog" >-->
+        <!--<div class="card-panel">-->
+        <!--<a href="{% url 'videoapp:category_topics' category.pk %}" >{{category.name }}</a><br>-->
+        <!--<small class="text-muted d-block">{{category.description }}</small>-->
+    <!--</div>-->
+
+
+      <!--{% endfor %}-->
+    <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    </div>
+<body>
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+	</body>
+
+
+
+</body>
+
+ {% endblock %}

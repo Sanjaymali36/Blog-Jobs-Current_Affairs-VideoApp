@@ -1,0 +1,37 @@
+{% extends 'jobs/base.html' %}
+
+{% block title %}
+  {{ category.name }} - {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'jobs:home' %}">Categories</a></li>
+  <li class="breadcrumb-item active">{{ categoy.name }}</li>
+{% endblock %}
+
+{% block content %}
+
+
+  <table class="table">
+    <thead class="thead-inverse"  style="background-color:#000000">
+         <tr >
+        <th style="background-color:#000000">Notification</th>
+        <th style="background-color:#000000">Qualification</th>
+        <th style="background-color:#000000">Last Date</th>
+        <th style="background-color:#000000">Remark</th>
+        <th style="background-color:#000000">Apply</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for topic in topics %}
+        <tr>
+          <td>{{ topic.notification }}</td>
+           <td>{{ topic.Qualification }}</td>
+          <td>{{ topic.last_date }}</td>
+          <td><a href="{% url 'jobs:topic_posts2' category.pk topic.pk %}">More Details</a></td>
+          <td><a href="{{topic.Apply_link}}">click Here</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

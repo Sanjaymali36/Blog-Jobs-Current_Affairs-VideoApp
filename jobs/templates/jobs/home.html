@@ -1,0 +1,187 @@
+{% extends 'jobs/base.html' %}
+
+{% load static %}
+<head>
+    <script>
+  console.log("hiiiii")
+</script>
+
+<link rel="icon" href="{% static 'jobs/bodhi_logo.png'%}" type="image/gif" sizes="16x16">
+    <style>
+		body {
+			background: #fafafa url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE0NTM1NzNEQ0RCMTExRTFCNEY4OTI4MTU2ODk0RUMwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE0NTM1NzNFQ0RCMTExRTFCNEY4OTI4MTU2ODk0RUMwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTQ1MzU3M0JDREIxMTFFMUI0Rjg5MjgxNTY4OTRFQzAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTQ1MzU3M0NDREIxMTFFMUI0Rjg5MjgxNTY4OTRFQzAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5YIglRAAAAN0lEQVR42mL4+vXrf9yAAYhxqQCKM8BZmHJQ3Zgq4GwGTB3I6hiwmoldGp9ufHbjczkefwMEGADDCyjIWuJVaQAAAABJRU5ErkJggg==');
+		}
+		.tag-cloud {
+			width: 332px;
+			margin: auto;
+		}
+		.tag-cloud ul {
+			list-style-type: none;
+			padding: 0px;
+			background-color:red;
+		}
+		.tag-cloud li {
+			margin: 5px 5px 5px 10px;
+			float: left;
+				  background-color:green;
+
+		}
+		.tag-cloud a {
+			display: inline-block;
+			position: relative;
+			color: #996633;
+			text-shadow: 0 1px 0 rgba(255,255,255, 0.4);
+			text-decoration: none;
+			text-align: center;
+			padding: 4px 9px 6px 6px;
+			font: bold 11px Tahoma, sans-serif;
+			border-radius: 3px;
+			border: 1px solid #cc912d;
+				background-color:black;
+
+
+			-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.2),
+						0 1px 0px rgba(255,255,255,0.4) inset;
+
+			background-image: -webkit-linear-gradient(top, rgba(254,218,113,1) 0%,rgba(254,205,97,1) 60%,rgba(254,188,74,1) 100%);
+			background-image: -moz-linear-gradient(top, rgba(254,218,113,1) 0%,rgba(254,205,97,1) 60%,rgba(254,188,74,1) 100%);
+			background-image: -o-linear-gradient(top, rgba(254,218,113,1) 0%,rgba(254,205,97,1) 60%,rgba(254,188,74,1) 100%);
+			background-image: -ms-linear-gradient(top, rgba(254,218,113,1) 0%,rgba(254,205,97,1) 60%,rgba(254,188,74,1) 100%);
+			background-image: linear-gradient(top, rgba(254,218,113,1) 0%,rgba(254,205,97,1) 60%,rgba(254,188,74,1) 100%);
+		}
+		.tag-cloud a:hover {
+			color: #492a0b;
+		}
+		.tag-cloud a:after {
+			content: '';
+			position: absolute;
+			height: 50%;
+			width: 15px;
+			border-left: 1px solid #cc912d;
+
+			background-image: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(254,218,113,1) 1%,rgba(254,205,97,1) 100%);
+			background-image: -moz-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(254,218,113,1) 1%,rgba(254,205,97,1) 100%);
+			background-image: -o-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(254,218,113,1) 1%,rgba(254,205,97,1) 100%);
+			background-image: -ms-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(254,218,113,1) 1%,rgba(254,205,97,1) 100%);
+			background-image: linear-gradient(top, rgba(255,255,255,0) 0%,rgba(254,218,113,1) 1%,rgba(254,205,97,1) 100%);
+			left: -5px;
+			top: 1px;
+
+			-webkit-transform: skewX(-35deg);
+			-moz-transform: skewX(-35deg);
+			-o-transform: skewX(-35deg);
+			-ms-transform: skewX(-35deg);
+			transform: skewX(-35deg);
+		}
+
+		.tag-cloud a:before {
+			content: '';
+			position: absolute;
+			height: 48%;
+			width: 15px;
+			border-left: 1px solid #cc912d;
+			bottom: 1px;
+			left: -5px;
+
+			-webkit-transform: skewX(35deg);
+			-moz-transform: skewX(35deg);
+			-o-transform: skewX(35deg);
+			-ms-transform: skewX(35deg);
+			transform: skewX(35deg);
+
+			background-image: -webkit-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(254,205,97,1) 10%,rgba(254,188,74,1) 100%);
+			background-image: -moz-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(254,205,97,1) 10%,rgba(254,188,74,1) 100%);
+			background-image: -o-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(254,205,97,1) 10%,rgba(254,188,74,1) 100%);
+			background-image: -ms-linear-gradient(top, rgba(240,240,240,1) 0%,rgba(254,205,97,1) 10%,rgba(254,188,74,1) 100%);
+			background-image: linear-gradient(top, rgba(240,240,240,1) 0%,rgba(254,205,97,1) 10%,rgba(254,188,74,1) 100%);
+
+			-webkit-box-shadow: -2px 1px 2px rgba(100,100,100,0.1);
+			box-shadow: -2px 1px 2px rgba(100,100,100,0.1);
+		}
+		.tag-cloud a span {
+			background-color: #FFFFFF;
+		    border: 1px solid #CC912D;
+		    border-radius: 5px 5px 5px 5px;
+		    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.4),
+		    			0 1px 1px rgba(0, 0, 0, 0.2) inset;
+		    display: inline-block;
+		    height: 5px;
+		    left: -5px;
+		    position: relative;
+		    top: -1px;
+		    vertical-align: middle;
+		    width: 5px;
+		    z-index: 10;
+		}
+
+  }
+
+<a href ="/CreateBlog/">New Blog</a>s
+{% block breadcrumb %}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+    <body>
+<br><br> <br><br>
+
+<!--  class="col s3 simple" style="margin-left: px;padding-left:px;width: 100%;">-->
+<div class="row">
+     <div class="col-s3" style="">
+         <div class="panel-title" style="max_width:100%;font-size:18px;color: inherit;background-color: black;font-family: 'Raleway', sans-serif;color: #fff;padding:10px ;  position: sticky; top: -10px;">
+JOBS BY LOCATION
+ </div>
+         <div class="  " style="display: flex;box-sizing: max-height:300px;padding:15px;border:solid #c3c2c2 1px; position: relative; ">
+
+<div class="row">
+
+
+
+     {% for category in categories %}
+	<div class="col-sm-3 tag-cloud">
+		<ul>
+			<li><a style="" href="{% url 'jobs:category_topics' category.pk %}"><span></span>{{category.name }}</a></li>
+
+		</ul>
+	</div>
+      {% endfor %}
+      </div>
+</div>
+<br><br> <br><br><br><br><br>
+<div class="panel-title" style="max_width:100%;font-size:18px;color: inherit;background-color: black;font-family: 'Raleway', sans-serif;color: #fff;padding:10px ;  position: sticky; top: -10px;">JOBS BY DEPARTMENT</div>
+  <div class="  "style="display:;max-height:300px; padding:10px;border: solid #c3c2c2 1px ; position: relative; ">
+<!--     <div class="panel-title" style="max_width:100%;font-size:16px;color: inherit;background-color: #000000;font-family: 'Raleway', sans-serif;color: #fff;padding:10px ; margin-bottom: -8px ;  position: sticky; top: -10px;">Category Wise Current Affair</div>-->
+
+</br>
+<div class="row">
+
+     {% for c in GK_categories %}
+
+ <div class="col-sm-3 tag-cloud">
+                <ul>
+		<li>	<a style=""  href="{% url 'jobs:category_topics2' c.pk %}"><span></span>{{c.name }}</a></li>
+
+                </ul>
+        </div>
+
+      {% endfor %}
+ </div>
+
+    </div>
+
+    </div>
+</body>
+
+{% endblock %}
+
+
+

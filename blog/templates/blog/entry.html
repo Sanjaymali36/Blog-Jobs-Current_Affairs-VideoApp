@@ -1,0 +1,24 @@
+{% extends './base.html' %}
+{% load staticfiles %}
+
+{% block title %}{{ entry.title }}{% endblock %}
+<body>
+<style>
+  iframe
+  {height:100%;
+  }
+</style>
+{% block content %}
+  <div class="row">
+    <div class="col">
+
+      <article class="single-entry" ">
+        <h2 class="page-header">{{ entry.title }}</h2>
+        <div class="card">
+          {{ entry.content|safe }}
+        </div>
+      </article>
+    </div>
+  </div>
+{% endblock content %}
+</body>

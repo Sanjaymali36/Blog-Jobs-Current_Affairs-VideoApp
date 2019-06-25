@@ -1,0 +1,86 @@
+{% extends 'blog/base.html' %}
+
+
+{% load staticfiles %}
+<head>
+
+
+<style>
+  .morecontent {
+   display: none;
+   }
+
+</style>>
+</head>
+
+
+
+{% block content %}
+    <body>
+
+
+
+
+ <div class="row ">
+     <div class="col s10 " >
+
+
+    <div class="card {% if forloop.first   %}border-dark{% endif %}" style="padding: 0" >
+        <div class=" card topics" ><h4 style="padding:5px; background-color: #062a2c; color: white ;">                 </h4>
+        </div>
+
+        <div class="text_title2"  >
+        <div style= " border-radius: 50%;">
+
+
+          <img src="{% static 'blog/bodhi_logo.png'%}" style="width:50px ; height:50px;border-radius: 100%;"alt="Avatar" ;>
+
+           <div style="display: inline-block; margin:5px ">
+            <div> {{ blog.creater }} </div>
+            <div>    </div>
+             </div>
+
+
+
+
+         <!--   <img src="{% static 'bodhi_logo.png'%}" style="width:50px ; height:50px;border-radius: 100%;"alt="Avatar" ;> -->
+        <div style="display: inline-block; margin:5px ">
+       <!--  <div> {{ post.created_by }} </div>
+           <div>   {{ post.updated_at.date }} </div> -->
+            </div>
+            </div>
+
+            <div> <strong > <h4 style="padding-left: 30 ;" >{{ blog.title}}:</h4> </strong> </ul></div>
+            <div class="title-text" style="padding: 10 45 10 45 ; color: inherit;font-family: 'Overlock', cursive;" >
+               <img src="" style="max-width:100%"/>
+	     
+               <p>{{ blog.content|safe}} </p><br><br>
+
+
+
+<div id="social">
+                                                                                                                                  
+      <!--	<a class="facebookBtn smGlobalBtn" href="http://www.facebook.com/sharer/sharer.php?u=http://13.234.37.98/blog/title/{{blogs.pk}}/" > </a>   -->
+                   	
+                         <a class="facebookBtn smGlobalBtn" href="http://www.facebook.com/sharer/sharer.php?u=http://13.234.37.98{{ request.get_full_path|urlencode }}" > </a>
+	                <a class="twitterBtn smGlobalBtn" href="http://www.twitter.com/login/?url=http://www.bodhiai.in/membership/register/{{ request.get_full_path|urlencode }}" ></a>
+                        <a class="googleplusBtn smGlobalBtn" href="http://bodhiaireact.s3-website.ap-south-1.amazonaws.com/#/" ></a>
+                        <a class="linkedinBtn smGlobalBtn" href="http://www.linkedin.com/shareArticle?url=http://www.bodhiai.in/membership/register/{{ request.get_full_path|urlencode }}&title=<Favourate Blog>&summary=<Blog>&source=www.bodhiai.in" ></a>
+                        <a class="pinterestBtn smGlobalBtn" href="http://bodhiaireact.s3-website.ap-south-1.amazonaws.com/#/" ></a>
+                        <a class="tumblrBtn smGlobalBtn" href="http://bodhiaireact.s3-website.ap-south-1.amazonaws.com/#/" ></a>
+                         <a class="rssBtn smGlobalBtn" href="http://bodhiaireact.s3-website.ap-south-1.amazonaws.com/#/" ></a>
+                </div>
+
+
+          </div>
+
+    </div>
+    </div>
+     </div>
+    </div>
+
+
+</body>
+
+ {% endblock %}
+

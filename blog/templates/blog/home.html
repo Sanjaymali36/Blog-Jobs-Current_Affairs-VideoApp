@@ -1,0 +1,274 @@
+{% extends './base.html' %}
+{% load staticfiles %}
+<head>
+
+
+<style>
+  .morecontent {
+   display: none;
+}
+</style>>
+</head>
+<a href ="/CreateBlog/">New Blog</a>
+
+{% block content %}
+    <body>
+<br><br><br>  <br><br> 	    
+ <div class="row ">
+     <div class="col s10 cardwidths " style="display:inline-block" >
+	
+	     <div style="">
+<div class="row"  style="display:inline-block">
+
+{% for post in blogs %}
+	<div class="col s12 m6 l4"  style="display:inline-block">
+    
+    <div class="card" >
+	    <div class=" card topics" >
+        </div>      
+	    <div class="card-image">
+            <img src="{{post.link1}}"  style="max-height:200px; max-width:100%;object-fit:fill">
+	
+             </div>
+
+	 <div style="padding-left: 10 ;" >
+         <h5> {{ post.title}}: </h5>
+        </div>
+
+        <div class="text2"  >
+        <div style= " border-radius: 50%;">
+         
+        <div style="display: inline-block; margin:5px ">
+     
+            </div>
+            </div>
+
+
+<!--
+	<form  id="myForm" action="/blog/title/{{post.id}}/" method="post"  name='myForm'>
+          {% csrf_token %}
+
+          <input type="hidden" value={{id}} name={{post.title}}/>
+            <button type="submit" name="id" value="{{post.id}}" class="readmorebtn">Read More</button>
+
+
+
+
+
+          <h5> <strong > <a style="padding-left: 30 ; "  href ="#" onclick="document.getElementById('myform').submit();">{{ post.title}}:</a> </h5>
+</form>
+-->        
+            
+	   <div class="text" style="padding-left: 5 ;color:grey" >
+		   <img src="" style="max-width:100%"/>
+               <p>{{ post.Blog_Text|safe}}<br><br> </p>
+
+            </div>
+
+
+
+    </div>
+                
+
+ <!--   <form form action="/blog/title/{{post.pk}}/"  id="myForm" method="post"  name='myForm'>
+          {% csrf_token %}
+
+          <input type="hidden" value={{id}} name={{post.title}}/>
+	    <button type="submit" name="pk" value="{{post.pk}}" class="readmorebtn">Read More>> </button> 
+
+    </form> -->
+
+       <div>
+	     <div style="padding-left: 10 ;" >
+
+			<h6> Category : {{post.topic}} </h6>
+	
+	     </div> 
+	       <a href="http://www.bodhiai.in/">
+        <img src="{% static 'blog/bodhi_logo.png'%}" style="width:50px ; height:50px;border-radius: 100%;"alt="Avatar" ;>
+
+           <div style="display: inline-block; margin:2px ">
+            <div> {{ post.created_by }} </div>
+            <div>   {{ post.updated_at.date }} </div>
+             </div>
+         </a>
+        </div>
+
+              <form form action="/blog/title/{{post.pk}}/"  id="myForm" method="post"  name='myForm'>
+          {% csrf_token %}
+
+          <input type="hidden" value={{id}} name={{post.title}}/>
+            <button type="submit" name="pk" value="{{post.pk}}" class="readmorebtn">Read More>> </button> 
+
+</form>
+
+    </div>
+        </div>
+
+
+              {% endfor %}
+    </div>
+         </div>
+
+ </div>
+
+
+<div class="col s2">
+     <div class="sidebars" style="">
+         <h4>latest Blogs</h4>
+      <h1 class="latest"></h1>
+
+    {% for category in categories %}
+    <div class="sideblog"style="border:solid 1px orange " >
+        <div class="card-panel">
+        <a href="{% url 'category_topics' category.pk %}" >{{category.name }}</a><br>
+        <small class="text-muted d-block">{{category.description }}</small>
+    </div>
+
+
+      {% endfor %}
+    </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+ <style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 60px;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+<body>
+<div>
+<div id="mySidenav" class="sidenav">
+
+     <div class="" style="">
+         <h4>latest Blogs</h4>
+      <h1 class="latest"></h1>
+
+    {% for category in categories %}
+
+
+<div id="" class="sideblog" >
+        <div class="card-panel">
+        <a href="{% url 'category_topics' category.pk %}" >{{category.name }}</a><br>
+        <small class="text-muted d-block">{{category.description }}</small>
+    </div>
+
+
+      {% endfor %}
+    </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+
+</div>
+
+    </div>
+
+<script>
+function openNav() {
+    var e = document.getElementById("mySidenav");
+    if (e.style.width == '200px')
+    {
+        e.style.width = '0px';
+    }
+    else
+    {
+        e.style.width = '200px';
+    }
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+</script>
+
+</body>
+
+
+
+</body>
+
+ {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

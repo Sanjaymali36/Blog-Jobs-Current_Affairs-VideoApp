@@ -1,0 +1,34 @@
+{% extends 'jobs/base.html' %}
+
+{% load static %}
+
+{% block title %}{{ topic.subject }}{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'jobs:home' %}">Jobs</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'jobs:category_topics' topic.category.pk %}">{{ topic.category.name }}</a></li>
+  <li class="breadcrumb-item active">{{ topic.subject }}</li>
+{% endblock %}
+
+{% block content %}
+
+  <div class="mb-4">
+  </div>
+
+  {% for post in topic.posts8.all %}
+
+
+    <div class="card mb {% if forloop.first   %}border-dark{% endif %}">
+        <div style="background-color:#000000" class="card-header text-white py-2 px-3">{{ post.topic }}  </div>
+ <div style="padding:15 25 15 25;color: #d63c24;font-size: 20px;line-height: normal;outline: medium none;text-decoration: none;">
+         {{ post.title}}:
+            </div>
+            <div style="font-size:16; padding:5 25 0 25">
+             <p>{{ post.job_details|safe}}</p>
+
+            </p>
+
+          </div>
+  {% endfor %}
+{% endblock %}
+<br>

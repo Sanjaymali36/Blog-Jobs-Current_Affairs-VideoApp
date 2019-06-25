@@ -1,0 +1,103 @@
+from rest_framework import generics
+from django.utils import timezone
+#:from celery.result import AsyncResult 
+from rest_framework.decorators import api_view
+from rest_framework.views import APIView
+from news.models import *
+from django.http import Http404, HttpResponse
+from .serializers import *
+
+import json
+import random
+from rest_framework.response import Response
+from rest_framework.permissions import (
+    IsAuthenticated
+)
+
+import datetime
+from decimal import Decimal
+
+
+
+
+class NewsDetailAPIView(APIView):
+
+    def get(self, request, format=None):
+        news_content =News.objects.all()
+        serialzer = NewsSerializer(news_content,many=True)
+        #return Response(serialzer.data)
+        content_list=[]
+        title_list=[]
+        for p in news_content:
+            title=p.title
+            text=p.news_text
+            content_list.append(text)
+            title_list.append(title)
+            print('api working')
+        news_title=zip(title_list,news_content)
+        news_list=[]
+        for t in news_title:
+            news_list.append(t)
+        context = {"titles":title_list,"news_content":content_list}
+        return Response(context)
+
+class DateWiseNewsDetailsAPIView(APIView):
+    def post(self,request,*args,**kwargs):
+        date = request.POST['date']
+        print(date)
+        dateWiseNews= News.objects.filter(date=date)
+        #news_content = News.objects.all()
+        serialzer = NewsSerializer(dateWiseNews, many=True)
+        #return Response(serialzer.data)
+
+        title_list=[]
+        content_list=[]
+        for i in dateWiseNews:
+            title=i.title
+            text= i.news_text
+            title_list.append(title)
+            content_list.append(text)
+        # #print('post api working')
+        # print(len(title_list))
+        # print(len(content_list))
+        contents=list(zip(title_list,content_list))
+        final_news = []
+        for i,j in contents:
+            dict = {'title':i,'text':j}
+            final_news.append(dict)
+             #print(type(i))
+             #context = {"date":date,"news_content":i}
+         #print(len(dict))
+        context={'date':date,'news':final_news}
+        return Response(context)
+
+
+class CatogoryWiseNewsDetailsAPIView(APIView):
+    def post(self,request,*args,**kwargs):
+        category_name = request.POST['category']
+        CatogoryWiseNews= News.objects.filter(category=category_name)
+        serialzer = NewsSerializer(CatogoryWiseNews, many=True)
+        #return Response(serialzer.data)
+        title_list=[]
+        content_list=[]
+        category_list=[]
+        for i in CatogoryWiseNews:
+            title=i.title
+            text= i.news_text
+            title_list.append(title)
+            content_list.append(text)
+            category=category_name
+            category_list.append(category)
+         #serialzer = NewsDisplaySerializer(CatogoryWiseNews)
+         #print('post api working')
+         contents=zip(title_list,content_list)
+         final_news = []
+         for j,k in contents:
+             dict = {'category':category_name,'title': j, 'text': k}
+             final_news.append(dict)
+             # print(type(i))
+             # context = {"date":date,"news_content":i}
+         # print(len(dict))
+        context = {'news': final_news}
+        return Response(context)
+

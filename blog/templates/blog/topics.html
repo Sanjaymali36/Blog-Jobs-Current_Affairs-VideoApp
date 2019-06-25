@@ -1,0 +1,52 @@
+{% extends 'blog/base.html' %}
+
+
+{% block title %}
+  {{ category.name }} - {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}</br>
+<!--<li class="breadcrumb-item"><a href="{% url 'blog:home' %}">Categories</a></li>-->
+
+{% endblock %}
+
+{% block content %}
+
+ <div class="row">
+
+
+  <table class=" table">
+    <!--<thead class="thead-inverse">
+      <tr>
+        <<th>Topic</th>
+        <th>Publisher</th>
+        <th>Publish Date</th>
+      </tr>
+    </thead> -->
+    <tbody>
+      {% for topic in topics %}
+      <h2> <a href="{% url 'blog:topic_posts' category.pk topic.pk %}"> </h2>
+         <div class="col s12 m6 l4">
+
+      <div class="card-panel" style="background-color: white" >
+        <div class="card-content black-text">
+          <span class="card-title "><a href="{% url 'blog:topic_posts' category.pk topic.pk %}" style="color: sea blue ; font-size: 20px;" class="">{{ topic.subject }}</a> </span>
+          <div>{{ topic.Publisher.username }} </div>
+        </div>
+        <div class="card-action">
+         <span>{{ topic.last_updated }}</span>
+        </div>
+      </div>
+
+    </div></a>
+
+        <!--<tr class="card">-->
+          <!--<td><a href="{% url 'topic_posts' category.pk topic.pk %}">{{ topic.subject }}</a></td>-->
+          <!--<td>{{ topic.Publisher.username }}</td>-->
+          <!--<td>{{ topic.last_updated }}</td>-->
+        <!--</tr>-->
+      {% endfor %}
+    </tbody>
+  </table>
+ </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in comments %}
+        <pre> by {{ post.user }}
+            {{ post.comment}}</pre>
+    {% endfor %}
+{% endblock %}
